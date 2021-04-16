@@ -1,0 +1,60 @@
+second problem :
+solution1:
+
+ALGORITHM compare_two_arrays
+VAR
+  set1 : ARRAY_OF INTEGER[];
+  set2 : ARRAY_OF INTEGER[];
+     i : INTEGER;
+     sum : INTEGER;
+    
+BEGIN
+    Write("Give the first set to compare");
+    Read(set1);
+ Write("Give the second set to compare");
+   Read(set2); 
+END
+ sum1:=0;
+    FOR i FROM 0 TO set1.length-1 STEP 1 DO
+     j:=0;
+    WHILE ( j<=set2.length-1 and set1[i]=set2[j]) DO
+        j++
+         END_WHILE 
+    IF(j=set2.length) THEN
+    sum1:= sum1 +set1[i]+set2[i]
+   END IF 
+   END FOR   
+
+    sum2:=0; 
+    FOR j FROM 0 TO set2.length-1 STEP 1 DO
+      i:=0;
+     WHILE ( i<=set1.length-1 and set1[i]=set2[j]) DO
+        i++
+        END_WHILE 
+    IF(i=set1.length) THEN
+    sum2:= sum2 +set2[i]+set1[i]
+    END IF     
+     END FOR
+
+ IF(sum1<>sum2) THEN
+   Write(sum1);
+       
+  END
+
+
+solution2:
+
+ALGORITHM hash
+VAR
+  htab : HASH_TABLE<INTEGER,INTEGER>;
+  set1,set2:INTEGER[];
+  i,count : INTEGER;
+  BEGIN
+  FOR i FROM 0 TO set1.length -1 STEP 1  DO
+       IF (htab.lookup(set1[i]) = TRUE) THEN
+           count := htab.get(set1[i]);
+           htab.insert(set1[i],count+1);
+       ELSE
+           htab.insert(set1[i],1);
+       END_IF
+   END_FOR

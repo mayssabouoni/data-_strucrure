@@ -1,0 +1,92 @@
+first problem :
+solution1:
+
+ALGORITHM compare_two_arrays
+VAR
+     tab1 : ARRAY_OF INTEGER[];
+     tab2 : ARRAY_OF INTEGER[];
+     i : INTEGER;
+     sum : INTEGER;
+BEGIN
+  Write("Give the first tab to compare");
+    Read(tab1);
+ Write("Give the second tab to compare");
+   Read(tab2);
+
+   sum1:=0;
+    FOR i FROM 0 TO tab1.length-1 STEP 1 DO
+     j:=0;
+    WHILE ( j<=tab2.length-1 and tab1[i]<>tab2[j]) DO
+        j++
+         END_WHILE 
+  IF(j=tab2.length) THEN
+  sum1:= sum1 +tab1[i]
+  END IF 
+   END FOR   
+    
+     
+     
+    sum2:=0; 
+    FOR j FROM 0 TO tab2.length-1 STEP 1 DO
+      i:=0;
+     WHILE ( i<=tab1.length-1 and tab1[i]<>tab2[j]) DO
+        i++
+        END_WHILE 
+    IF(i=tab1.length) THEN
+    sum2:= sum2 +tab2[i]
+    END IF     
+     END FOR 
+   
+
+   IF(sum1<>sum2) THEN
+   Write(sum1);
+       
+   
+END
+
+solution2:
+
+ALGORITHM hash
+VAR
+  htab : HASH_TABLE<INTEGER,INTEGER>;
+  set1,set2:INTEGER[];
+  i,count : INTEGER;
+BEGIN
+ htab : HASH_TABLE<INTEGER,INTEGER>
+  FOR i FROM 0 TO set1.length-1 STEP 1 DO 
+  htab.insert(set1[i],1) 
+  END FOR
+  write(htab)
+   FOR i FROM 0 TO set2.length -1 STEP 1  DO
+       IF (htab.lookup(set2[i]) = TRUE) THEN
+           count := htab.get(set2[i]);
+           htab.insert(set2[i],count+1);
+       ELSE
+           htab.insert(set2[i],1);
+       END_IF
+   END_FOR
+
+    FOR i FROM 0 TO set1.length -1 STEP 1  DO
+       IF (htab.get(set1[i]) = 1) THEN
+           sum1 :=  sum+ set1[i];
+           BREAK;
+       END_IF
+   END_FOR
+
+   FOR i FROM 0 TO set2.length -1 STEP 1  DO
+       IF (htab.get(set2[i]) = 1) THEN
+           sum 2:=  sum+ set2[i];
+           BREAK;
+       END_IF
+   END_FOR
+   sum:=sum1+sum2
+   Write(sum);
+END
+
+
+    
+END
+
+
+
+
