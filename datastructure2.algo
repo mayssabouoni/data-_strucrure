@@ -58,3 +58,13 @@ VAR
            htab.insert(set1[i],1);
        END_IF
    END_FOR
+   FOR i FROM 0 TO set1.length -1 STEP 1  DO
+       IF (htab.get(set1[i]) > 1) THEN
+           sum1 :=  sum+ set1[i] + set2[i];
+           BREAK;
+       END_IF
+   END_FOR
+
+   sum:=sum1+sum2
+   Write(sum);
+END
